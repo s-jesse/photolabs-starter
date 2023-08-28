@@ -1,21 +1,43 @@
-import React from "react";
-
+import React, {useState} from "react";
+import App from "App";
 import "../styles/PhotoListItem.scss";
+import PhotoFavButton from "./PhotoFavButton";
+import HomeRoute from "routes/HomeRoute";
+import PhotoDetailsModal from "routes/PhotoDetailsModal";
 
 
-const sampleDataForPhotoListItem = {
-  id: "1",
-  location: {
-    city: "Montreal",
-    country: "Canada",
-  },
-  imageSource: `${process.env.PUBLIC_URL}/Image-1-Regular.jpeg`,
-  username: "Joe Example",
-  profile: `${process.env.PUBLIC_URL}/profile-1.jpg`,
-};
 
-const PhotoListItem = () => {
-  /* Insert React */
+const PhotoListItem = (props) => {
+//function moved to homeroute and now takes in values as props sent from homeroute to photolist into here as props
+// where is it giving the values???
+// is main thing here from props photoid is to send the props.id with the function and state?
+const [imageState, setImageState] = useState("notclicked")
+const handleClick = () => { 
+  console.log("props", props)
+  setImageState("clicked") // prev?
+
+  let selectedPhoto = {
+    urls: props.urls,
+    similar_photos: props.similar_photos
+
+  }
+  props.handleClick(selectedPhoto) // sending back to app
+
+}
+
+  return ( 
+    <div className="photo-list__item"> {/*props value change to props.value and being sent with global data*/}
+        <PhotoFavButton toggleFav={props.toggleFav} favourites = {props.favourites} id={props.id} /> {/*"return" button and pass down props toggleFav function, favourites state, id props to button*/}
+       <img className="photo-list__image " src={props.urls.regular} onClick={handleClick} />
+        <p><img className="photo-list__user-profile " src={props.user.profile} /></p>
+     
+        <h2 className="photo-list__user-info">{props.user.name}</h2>
+        <div className="photo-list__user-details">
+        <h2 className="photo-list__user-location">{props.location.city}, {props.location.country}</h2>
+        </div>
+
+    </div>
+    );
 };
 
 export default PhotoListItem;
