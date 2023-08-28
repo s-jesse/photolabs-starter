@@ -1,7 +1,6 @@
 import React from "react";
-
+import PhotoListItem from "./PhotoListItem";
 import "../styles/PhotoList.scss";
-
 const sampleDataForPhotoList = [
   {
     id: "1",
@@ -56,12 +55,28 @@ const sampleDataForPhotoList = [
   },
 ];
 
-const PhotoList = () => {
+const PhotoList = (props) => { 
+  // props is now getting togglefav function / favourite state from homeroute 
+  // it is then sending key / photoitem.id value , toggleFav now set to props.togglefav following same pattern as photos
+  // maping through photo item and sending everyhing with favourties state and all the above to photolistitem function as props
+
+
+// why is there 9 photos in display in grid layout?
+// what is meant by cleanup any empty props
+// why is there no hover
   return (
-    <ul className="photo-list">
-      {/* Insert React */}
-    </ul>
+    <div  className="photo-list">
+
+{props.photos.map(photoItem => ( // change to props.photos because photos being passed down from homeroute
+        <PhotoListItem {...photoItem} key={photoItem.id} toggleFav={props.toggleFav} favourites={props.favourites} handleClick={props.handleClick} /> 
+      ))}
+  </div>
   );
 };
 
+{/* <div  className="photo-list">
+{sampleDataForPhotoList.map((photoList) => {
+return <ul key={photoList.id}> <li>{photoList}</li></ul>
+}) }
+</div> */}
 export default PhotoList;
