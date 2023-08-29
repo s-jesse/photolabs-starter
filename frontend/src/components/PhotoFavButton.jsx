@@ -6,11 +6,19 @@ import PhotoDetailsModal from 'routes/PhotoDetailsModal';
 import PhotoListItem from './PhotoListItem';
 
 function PhotoFavButton(props) {
-const selected = props.favourites.includes(props.id); // storing props of favourits - state / id from photolistitem to check if selected 
-console.log("props", props)
-const handleClick = function() {
-  props.toggleFav(props.id) //is this / onclick button where everything meets to pass this value to homeroute???? 
-}
+  const selected = props.favourites.includes(props.id); // storing props of favourits - state / id from photolistitem to check if selected 
+  // if (Number(props.id) === 2) {
+  //   console.log("select", selected);
+  //   console.log("props.id", props.id);
+  // }
+  console.log("props", props);
+  console.log("select", selected);
+  console.log("props.id", props.id);
+  console.log("favourites", props.favourites);
+
+  const handleClick = function() {
+    props.toggleFav(props.id); //is this / onclick button where everything meets to pass this value to homeroute???? 
+  };
   return (
     <div className="photo-list__fav-icon" onClick={handleClick}> {/* add onclick to parent div and give it "prop value" of toggleFav function instead of call back */}
       <div className="photo-list__fav-icon-svg">

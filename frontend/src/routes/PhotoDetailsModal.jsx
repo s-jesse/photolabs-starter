@@ -19,6 +19,13 @@ const PhotoDetailsModal = (props) => {
     // let similarImages = photoItem;
     console.log("photoitem loop in ", similarImages);
   }
+
+
+  console.log("props.favourites in photoModal", props.favourites);
+  console.log("props.id in photoModal", props.id);
+  console.log("props.selectedPhoto in photoModal", props.selectedPhoto);
+
+
   //   return similarImages
   // }
 
@@ -26,7 +33,7 @@ const PhotoDetailsModal = (props) => {
 
   return (
     <div className="photo-details-modal">
-      <PhotoFavButton toggleFav={props.toggleFav} favourites={props.favourites} id={props.id} />
+      <PhotoFavButton toggleFav={props.toggleFav} favourites={props.favourites} id={props.selectedPhoto.id} />
 
       <button className="photo-details-modal__close-button" onClick={handleClick}>
         <img src={closeSymbol} alt="close symbol" />

@@ -55,22 +55,23 @@ const sampleDataForPhotoList = [
   },
 ];
 
-const PhotoList = (props) => { 
+const PhotoList = (props) => {
   // props is now getting togglefav function / favourite state from homeroute 
   // it is then sending key / photoitem.id value , toggleFav now set to props.togglefav following same pattern as photos
   // maping through photo item and sending everyhing with favourties state and all the above to photolistitem function as props
 
+  console.log("favourites inside photolist", props.favourites);
 
-// why is there 9 photos in display in grid layout?
-// what is meant by cleanup any empty props
-// why is there no hover
+  // why is there 9 photos in display in grid layout?
+  // what is meant by cleanup any empty props
+  // why is there no hover
   return (
-    <div  className="photo-list">
+    <div className="photo-list">
 
-{props.photos.map(photoItem => ( // change to props.photos because photos being passed down from homeroute
-        <PhotoListItem {...photoItem} key={photoItem.id} toggleFav={props.toggleFav} favourites={props.favourites} handleClick={props.handleClick} /> 
+      {props.photos.map(photoItem => ( // change to props.photos because photos being passed down from homeroute
+        <PhotoListItem {...photoItem} key={photoItem.id} toggleFav={props.toggleFav} favourites={props.favourites} handleClick={props.handleClick} />
       ))}
-  </div>
+    </div>
   );
 };
 

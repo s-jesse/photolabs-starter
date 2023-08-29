@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import App from 'App';
 import '../styles/HomeRoute.scss';
 import TopNavigation from 'components/TopNavigationBar';
@@ -29,8 +29,8 @@ const HomeRoute = (props) => {
   // } 
   return (
     <div className="home-route">
-    <TopNavigation topics={topics} favouriteExists={props.favourites.length > 0}/> {/* pass value from favourites state set to if/length to topNav as prop */}
-    <PhotoList photos={photos} toggleFav={props.toggleFav} favourites={props.favourites} handleClick={props.handleClick}/> {/* pass toggleFav function and favourite state as prop/value */}
+      <TopNavigation topics={topics} favouriteExists={props.favourites.length > 0} actions={props.ACTIONS} /> {/* pass value from favourites state set to if/length to topNav as prop */}
+      <PhotoList photos={photos} toggleFav={props.toggleFav} favourites={props.favourites} handleClick={props.handleClick} /> {/* pass toggleFav function and favourite state as prop/value */}
     </div>
   );
 };
