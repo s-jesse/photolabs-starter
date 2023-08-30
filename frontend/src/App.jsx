@@ -1,13 +1,10 @@
 import React, { useState } from 'react';
 import FavIcon from 'components/FavIcon';
-import PhotoList from './components/PhotoList';
-import TopicList from 'components/TopicList';
 import './App.scss';
 import TopNavigation from 'components/TopNavigationBar';
 import HomeRoute from 'routes/HomeRoute';
 import PhotoDetailsModal from 'routes/PhotoDetailsModal';
 import useApplicationData from 'hooks/useApplicationData';
-import { ACTIONS } from 'hooks/useApplicationData';
 // import FavBadge from 'components/FavBadge';
 
 const sampleDataForPhotoListItem = {
@@ -50,14 +47,17 @@ const App = () => {
     selectedPhoto,
     handleClick,
     toggleFav,
-    favourites
+    favourites,
+    photos,
+    topics,
+    fetchByTopic
   } = useApplicationData();
 
   return (
     <div className="App">
       {/* <TopNavigation/>
       <PhotoList/> */}
-      <HomeRoute handleClick={handleClick} favourites={favourites} toggleFav={toggleFav} />
+      <HomeRoute fetchByTopic={fetchByTopic} topics={topics} photos={photos} handleClick={handleClick} favourites={favourites} toggleFav={toggleFav} />
       {showModal && <PhotoDetailsModal handleClick={handleClick} selectedPhoto={selectedPhoto} toggleFav={toggleFav} favourites={favourites} />}
 
     </div>

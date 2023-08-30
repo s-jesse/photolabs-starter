@@ -11,10 +11,7 @@ function PhotoFavButton(props) {
   //   console.log("select", selected);
   //   console.log("props.id", props.id);
   // }
-  console.log("props", props);
-  console.log("select", selected);
-  console.log("props.id", props.id);
-  console.log("favourites", props.favourites);
+
 
   const handleClick = function() {
     props.toggleFav(props.id); //is this / onclick button where everything meets to pass this value to homeroute???? 

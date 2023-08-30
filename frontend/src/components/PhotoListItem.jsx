@@ -11,14 +11,8 @@ const PhotoListItem = (props) => {
   //function moved to homeroute and now takes in values as props sent from homeroute to photolist into here as props
   // where is it giving the values???
   // is main thing here from props photoid is to send the props.id with the function and state?
-  const [imageState, setImageState] = useState("notclicked");
-  console.log("prop.id in pohotolistitem photoitem:", props.id);
-  console.log("props in pohotolistitem photoitem:", props);
-  const handleClick = () => {
-    console.log("props", props);
-    setImageState("clicked"); // prev?
-    console.log("prop.id in pohotolistitem photoitem:", props.id);
-    console.log("props in pohotolistitem photoitem:", props);
+
+  const handleClick = () => { // review this function interaction / bridge
 
     let selectedPhoto = {
       urls: props.urls,

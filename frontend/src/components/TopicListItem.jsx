@@ -8,10 +8,15 @@ const sampleDataForTopicListItem = {
   label: "Nature",
 };
 
+
 const TopicListItem = (props) => {
+  const handleClick = () => {
+    //console.log("props.id", props.id);
+    props.fetchByTopic(props.id);
+  };
   return (
-    <div className="topic-list__item" >
-       <h2>{props.slug} {props.title}</h2>
+    <div className="topic-list__item" onClick={handleClick} >
+      <span>{props.title}</span>
     </div>
   );
 };

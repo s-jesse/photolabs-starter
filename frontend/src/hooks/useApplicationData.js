@@ -1,5 +1,5 @@
 
-import React, { useReducer } from "react";
+import React, { useReducer, useEffect } from "react";
 
 
 export const ACTIONS = {
@@ -8,13 +8,17 @@ export const ACTIONS = {
   SET_PHOTO_DATA: 'SET_PHOTO_DATA',
   SET_TOPIC_DATA: 'SET_TOPIC_DATA',
   SELECT_PHOTO: 'SELECT_PHOTO',
-  DISPLAY_PHOTO_DETAILS: 'DISPLAY_PHOTO_DETAILS'
+  DISPLAY_PHOTO_DETAILS: 'DISPLAY_PHOTO_DETAILS',
+  GET_PHOTOS_BY_TOPICS: 'GET_PHOTOS_BY_TOPICS'
 };
 const intialState = {
   displayModal: false,
   favourites: [],
-  selectPhoto: {}
+  selectPhoto: {},
+  photoData: [],
+  topicData: []
 };
+
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -39,6 +43,14 @@ const reducer = (state, action) => {
 
       return { ...state, selectPhoto: action.payload };
 
+    case ACTIONS.SET_PHOTO_DATA:
+      return { ...state, photoData: action.payload };
+
+    case ACTIONS.SET_TOPIC_DATA:
+      return { ...state, topicData: action.payload };
+
+    case ACTIONS.GET_PHOTOS_BY_TOPICS:
+      return { ...state, photoData: action.payload };
 
     default:
       throw new Error(
@@ -52,10 +64,20 @@ const reducer = (state, action) => {
 // eg setting / updating favourites till works
 
 const useApplicationData = () => {
+
+  useEffect(() => {
+    fetch('http://localhost:8001/api/photos')
+      .then((response) => response.json())
+      .then((data) => dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: data }));
+    fetch('http://localhost:8001/api/topics')
+      .then((response) => response.json())
+      .then((data) => dispatch({ type: ACTIONS.SET_TOPIC_DATA, payload: data })); // can put multiple useEffects with fetches
+  }, []);
+
   // const [showModal, setShowModal] = useState(false);
   // const [selectedPhoto, setSelectedPhoto] = useState({});
 
-  const handleClick = (photo) => {
+  const handleClick = (photo) => { // better descript different handleClicks by adjusting name accordingly
     //setSelectedPhoto(photo);
     dispatch({ type: ACTIONS.SELECT_PHOTO, payload: photo });
     //setShowModal(prev => !prev);
@@ -64,6 +86,12 @@ const useApplicationData = () => {
 
   };
 
+  const fetchByTopic = (topic_id) => {
+    fetch(`http://localhost:8001/api/topics/photos/${topic_id}`)
+      .then((response) => response.json())
+      .then((data) => dispatch({ type: ACTIONS.GET_PHOTOS_BY_TOPICS, payload: data })); // can put multiple useEffects with fetches
+
+  };
 
   const [state, dispatch] = useReducer(reducer, intialState);
   console.log("useReducer state", state);
@@ -88,7 +116,10 @@ const useApplicationData = () => {
     selectedPhoto: state.selectPhoto,
     handleClick,
     toggleFav,
-    favourites: state.favourites
+    favourites: state.favourites,
+    photos: state.photoData,
+    topics: state.topicData,
+    fetchByTopic
   };
 };
 

@@ -25,16 +25,16 @@ const TopicList = (props) => {
   // should it hover?
   return (
     <div className="top-nav-bar__topic-list">
-    {/* {sampleDataForTopicList.map((topicList) => {
+      {/* {sampleDataForTopicList.map((topicList) => {
     return(
     <ul key={topicList.id}>
         <h2>{topicList.slug} {topicList.title}</h2>
     </ul>
     )
   }) } */}
-  {props.topics.map(topicListItems => 
-  <TopicListItem {...topicListItems} key={topicListItems.id} />
-  ) }
+      {props.topics.map(topicListItems =>
+        <TopicListItem {...topicListItems} key={topicListItems.id} fetchByTopic={props.fetchByTopic} />
+      )}
     </div>
   );
 };

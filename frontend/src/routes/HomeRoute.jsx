@@ -4,8 +4,6 @@ import '../styles/HomeRoute.scss';
 import TopNavigation from 'components/TopNavigationBar';
 import PhotoList from 'components/PhotoList';
 import PhotoListItem from 'components/PhotoListItem';
-import photos from 'mocks/photos';
-import topics from 'mocks/topics';
 import PhotoDetailsModal from './PhotoDetailsModal';
 
 // bring in toggleFav function from photolistitem into homeroute and state to set globally 
@@ -29,8 +27,8 @@ const HomeRoute = (props) => {
   // } 
   return (
     <div className="home-route">
-      <TopNavigation topics={topics} favouriteExists={props.favourites.length > 0} actions={props.ACTIONS} /> {/* pass value from favourites state set to if/length to topNav as prop */}
-      <PhotoList photos={photos} toggleFav={props.toggleFav} favourites={props.favourites} handleClick={props.handleClick} /> {/* pass toggleFav function and favourite state as prop/value */}
+      <TopNavigation fetchByTopic={props.fetchByTopic} topics={props.topics} favouriteExists={props.favourites.length > 0} actions={props.ACTIONS} /> {/* pass value from favourites state set to if/length to topNav as prop */}
+      <PhotoList photos={props.photos} toggleFav={props.toggleFav} favourites={props.favourites} handleClick={props.handleClick} /> {/* pass toggleFav function and favourite state as prop/value */}
     </div>
   );
 };
