@@ -28,13 +28,13 @@ const PhotoListItem = (props) => {
     <div className="photo-list__item"> {/*props value change to props.value and being sent with global data*/}
       <PhotoFavButton toggleFav={props.toggleFav} favourites={props.favourites} id={props.id} /> {/*"return" button and pass down props toggleFav function, favourites state, id props to button*/}
       <img className="photo-list__image " src={props.urls.regular} onClick={handleClick} />
-      <p><img className="photo-list__user-profile " src={props.user.profile} /></p>
-
-      <h2 className="photo-list__user-info">{props.user.name}</h2>
-      <div className="photo-list__user-details">
-        <h2 className="photo-list__user-location">{props.location.city}, {props.location.country}</h2>
+      <div className="profile-container">
+        <img className="photo-list__user-profile " src={props.user.profile} />
+        <div className="photo-list__user-details">
+          <p className="photo-list__user-info">{props.user.name} </p>
+          <p className="photo-list__user-location">{props.location.city}, {props.location.country} </p>
+        </div>
       </div>
-
     </div>
   );
 };
