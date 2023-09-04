@@ -2,7 +2,8 @@
 The PhotoLabs project for the Web Development React course programming.
 
 # Photolabs
-
+A simple and interactive photo gallery app that allows you to heart any photo you like and remove any hearts if you decide otherwise. A icon in the navigation bar has a heart badge that will change to let you know if there are photos liked. There are also topics that filter the photos accordingly. It will also display a clicked photo in a modal view and bring up similar photos below it. Using a backend api It fetches the photos and delivers sleek front end interface by utilizing React
+. 
 ## Setup
 
 Install dependencies with `npm install` in each respective `/frontend` and `/backend`.
