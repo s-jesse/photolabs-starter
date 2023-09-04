@@ -40,14 +40,14 @@ const sampleDataForPhotoListItem3 = {
 const App = () => {
 
   const {
-    showModal,
-    selectedPhoto,
-    handleClick,
-    toggleFav,
-    favourites,
-    photos,
-    topics,
-    fetchByTopic
+    showModal, // state being handled by reducer for photoModal
+    selectedPhoto, // state being handled by reducer for selectPhoto object and photo parameter of handleClick
+    handleClick, // onClick function dealing with selectPhoto dispatch and showModal dispatch
+    toggleFav, // function used for toggling favIcon / badge and using favourites state and photoId parameter to handle dispatch action
+    favourites, // state being handled by reducer thats an array that adds or removes photo id.
+    photos, // photos being fetched from api 
+    topics, // topics being fetched from api
+    fetchByTopic // function that dynamically fetches photos based on topic id thats passed in as parameter and displays photos categorically 
   } = useApplicationData();
 
   return (
