@@ -1,35 +1,19 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import '../styles/PhotoDetailsModal.scss';
 import closeSymbol from '../assets/closeSymbol.svg';
-// import PhotoFavButton from 'components/PhotoFavButton';
-import PhotoListItem from 'components/PhotoListItem';
-import FavIcon from 'components/FavIcon';
 import PhotoFavButton from 'components/PhotoFavButton';
 
 const PhotoDetailsModal = (props) => {
 
   const handleClick = () => {
-    console.log("working");
     props.handleClick();
   };
-  // const similarPhotoLibrary = () => {
+
   let similarImages = [];
   for (let photoItem in props.selectedPhoto.similar_photos) {
     similarImages.push(props.selectedPhoto.similar_photos[photoItem].urls.regular);
-    // let similarImages = photoItem;
-    console.log("photoitem loop in ", similarImages);
+
   }
-
-
-  console.log("props.favourites in photoModal", props.favourites);
-  console.log("props.id in photoModal", props.id);
-  console.log("props.selectedPhoto in photoModal", props.selectedPhoto);
-
-
-  //   return similarImages
-  // }
-
-  // Object.keys(myObject).map
 
   return (
     <div className="photo-details-modal">
@@ -39,8 +23,10 @@ const PhotoDetailsModal = (props) => {
         <img src={props.selectedPhoto.urls.full} />
       </div>
       <h3 className='photo-details-modal__header'>Similar Photos</h3>
-      {similarImages.map(photoItems => (
-        <img className='photo-details-modal__images' src={photoItems} key={photoItems.id} />))}
+      <div className='photo-details-modal__images'>
+        {similarImages.map(photoItems => (
+          <img src={photoItems} key={photoItems.id} height={500} width={500} />))}
+      </div>
     </div>
   );
 

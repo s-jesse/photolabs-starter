@@ -11,7 +11,6 @@ const sampleDataForTopicListItem = {
 
 const TopicListItem = (props) => {
   const handleClick = () => {
-    //console.log("props.id", props.id);
     props.fetchByTopic(props.id);
   };
   return (

@@ -1,11 +1,8 @@
 import React, { useState } from 'react';
-import FavIcon from 'components/FavIcon';
 import './App.scss';
-import TopNavigation from 'components/TopNavigationBar';
 import HomeRoute from 'routes/HomeRoute';
 import PhotoDetailsModal from 'routes/PhotoDetailsModal';
 import useApplicationData from 'hooks/useApplicationData';
-// import FavBadge from 'components/FavBadge';
 
 const sampleDataForPhotoListItem = {
   id: "1",
@@ -55,8 +52,6 @@ const App = () => {
 
   return (
     <div className="App">
-      {/* <TopNavigation/>
-      <PhotoList/> */}
       <HomeRoute fetchByTopic={fetchByTopic} topics={topics} photos={photos} handleClick={handleClick} favourites={favourites} toggleFav={toggleFav} />
       {showModal && <PhotoDetailsModal handleClick={handleClick} selectedPhoto={selectedPhoto} toggleFav={toggleFav} favourites={favourites} />}
 

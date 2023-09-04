@@ -1,32 +1,26 @@
 import React, { useState } from "react";
-import App from "App";
 import "../styles/PhotoListItem.scss";
 import PhotoFavButton from "./PhotoFavButton";
-import HomeRoute from "routes/HomeRoute";
-import PhotoDetailsModal from "routes/PhotoDetailsModal";
+
 
 
 
 const PhotoListItem = (props) => {
-  //function moved to homeroute and now takes in values as props sent from homeroute to photolist into here as props
-  // where is it giving the values???
-  // is main thing here from props photoid is to send the props.id with the function and state?
 
-  const handleClick = () => { // review this function interaction / bridge
 
+  const handleClick = () => {
     let selectedPhoto = {
       urls: props.urls,
       similar_photos: props.similar_photos,
       id: props.id
 
     };
-    props.handleClick(selectedPhoto); // sending back to app
-
+    props.handleClick(selectedPhoto);
   };
 
   return (
-    <div className="photo-list__item"> {/*props value change to props.value and being sent with global data*/}
-      <PhotoFavButton toggleFav={props.toggleFav} favourites={props.favourites} id={props.id} /> {/*"return" button and pass down props toggleFav function, favourites state, id props to button*/}
+    <div className="photo-list__item">
+      <PhotoFavButton toggleFav={props.toggleFav} favourites={props.favourites} id={props.id} />
       <img className="photo-list__image " src={props.urls.regular} onClick={handleClick} />
       <div className="profile-container">
         <img className="photo-list__user-profile " src={props.user.profile} />
