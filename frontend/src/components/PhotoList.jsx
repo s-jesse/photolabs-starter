@@ -58,7 +58,7 @@ const sampleDataForPhotoList = [
 const PhotoList = (props) => {
 
   return (
-    <div className="photo-list">
+    <div className='photo-list'>
 
       {props.photos.map(photoItem => (
         <PhotoListItem {...photoItem} key={photoItem.id} toggleFav={props.toggleFav} favourites={props.favourites} handleClick={props.handleClick} />

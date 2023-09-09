@@ -28,7 +28,6 @@ const reducer = (state, action) => {
       const currentValue = action.payload;
       const newState = { ...state, favourites: [...state.favourites, action.payload] };
       return newState;
-      console.log("reducer FAVOURITES", favourites);
     case ACTIONS.FAV_PHOTO_REMOVED:
       const newFavourites = state.favourites.filter(favourite => favourite !== action.payload);
 
@@ -87,7 +86,6 @@ const useApplicationData = () => {
   };
 
   const [state, dispatch] = useReducer(reducer, intialState);
-  console.log("useReducer state", state);
 
   const toggleFav = (photoid) => {
     if (state.favourites.includes(photoid)) {
